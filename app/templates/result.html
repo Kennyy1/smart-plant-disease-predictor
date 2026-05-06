@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="container py-4 py-lg-5">
+    <div class="page-heading">
+        <p class="eyebrow mb-2">Prediction Result</p>
+        <h1>{{ result.display_message }}</h1>
+        <p class="text-muted">Review the uploaded image, model output, and recommended next step below.</p>
+    </div>
+
+    <div class="row g-4">
+        <div class="col-lg-5">
+            <div class="panel-card h-100">
+                <img src="{{ result.image_url }}" alt="Uploaded crop image" class="result-image">
+            </div>
+        </div>
+        <div class="col-lg-7">
+            <div class="panel-card h-100">
+                <div class="row g-3">
+                    <div class="col-md-6">
+                        <div class="metric-tile">
+                            <span>Crop detected</span>
+                            <h3>{{ format_label(result.crop_name) }}</h3>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="metric-tile">
+                            <span>Disease predicted</span>
+                            <h3>{{ format_label(result.disease_name) }}</h3>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="metric-tile">
+                            <span>Confidence score</span>
+                            <h3>{{ "%.2f"|format(result.confidence_score * 100) }}%</h3>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="metric-tile">
+                            <span>Prediction status</span>
+                            <h3>{{ result.status }}</h3>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="advice-box mt-4">
+                    <h4>Recommendation</h4>
+                    <p class="mb-0">{{ result.recommendation }}</p>
+                </div>
+
+                {% if history_item %}
+                <p class="text-muted mt-3 mb-0">Saved on {{ history_item.created_at.strftime("%d %b %Y at %H:%M") }}.</p>
+                {% endif %}
+
+                <div class="d-flex flex-wrap gap-3 mt-4">
+                    <a href="/detect" class="btn btn-success rounded-pill px-4">Make Another Prediction</a>
+                    <a href="/history" class="btn btn-outline-success rounded-pill px-4">View History</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

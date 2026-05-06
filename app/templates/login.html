@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="auth-section">
+    <div class="container py-5">
+        <div class="row justify-content-center">
+            <div class="col-lg-5">
+                <div class="auth-card">
+                    <p class="eyebrow mb-2">Welcome back</p>
+                    <h1 class="mb-3">Login to continue</h1>
+                    <p class="text-muted mb-4">Access your dashboard, make new predictions, and review saved detection records.</p>
+                    <form method="post" action="/login" class="row g-3">
+                        <div class="col-12">
+                            <label class="form-label">Email address</label>
+                            <input type="email" class="form-control form-control-lg" name="email" required>
+                        </div>
+                        <div class="col-12">
+                            <label class="form-label">Password</label>
+                            <input type="password" class="form-control form-control-lg" name="password" required>
+                        </div>
+                        <div class="col-12 d-grid">
+                            <button type="submit" class="btn btn-success btn-lg rounded-pill">Login</button>
+                        </div>
+                    </form>
+                    <p class="mt-4 mb-0 text-muted">Need an account? <a href="/signup" class="fw-semibold text-decoration-none">Sign up here</a>.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

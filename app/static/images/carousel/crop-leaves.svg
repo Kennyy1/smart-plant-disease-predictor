@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="3840" height="2160" viewBox="0 0 3840 2160" fill="none">
+  <rect width="3840" height="2160" fill="#173F28"/>
+  <rect width="3840" height="2160" fill="url(#paint0_linear)"/>
+  <g opacity="0.92">
+    <path d="M791 1748C509 1395 533 975 920 741C1268 530 1643 688 1802 1021C1960 1355 1843 1770 1504 1988C1147 2218 925 1954 791 1748Z" fill="#89B56A"/>
+    <path d="M1196 742C1192 1162 1126 1572 946 1944" stroke="#1D4F2D" stroke-width="26" stroke-linecap="round"/>
+    <path d="M1001 1227C1140 1247 1297 1207 1436 1097" stroke="#1D4F2D" stroke-width="18" stroke-linecap="round"/>
+    <path d="M965 1493C1110 1513 1287 1468 1450 1332" stroke="#1D4F2D" stroke-width="18" stroke-linecap="round"/>
+  </g>
+  <g opacity="0.94">
+    <path d="M2323 1694C2080 1334 2101 959 2426 718C2743 484 3114 566 3318 898C3520 1227 3490 1624 3221 1869C2927 2136 2448 1900 2323 1694Z" fill="#2F6B3F"/>
+    <path d="M2792 719C2780 1138 2728 1496 2582 1828" stroke="#BFE09B" stroke-width="24" stroke-linecap="round"/>
+    <path d="M2606 1155C2731 1175 2888 1137 3031 1021" stroke="#BFE09B" stroke-width="18" stroke-linecap="round"/>
+    <path d="M2556 1449C2697 1469 2873 1421 3027 1294" stroke="#BFE09B" stroke-width="18" stroke-linecap="round"/>
+  </g>
+  <rect x="402" y="304" width="1324" height="348" rx="38" fill="#FFFDF4" fill-opacity="0.12" stroke="#FFFDF4" stroke-opacity="0.2" stroke-width="10"/>
+  <text x="494" y="474" fill="#FFFDF4" font-family="Arial, sans-serif" font-size="142" font-weight="700">Clear leaf imagery matters</text>
+  <text x="494" y="594" fill="#E3EDDD" font-family="Arial, sans-serif" font-size="60">Well-framed leaf photos improve classification confidence and result quality.</text>
+  <defs>
+    <linearGradient id="paint0_linear" x1="1920" y1="0" x2="1920" y2="2160" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#234E33"/>
+      <stop offset="1" stop-color="#10281A"/>
+    </linearGradient>
+  </defs>
+</svg>

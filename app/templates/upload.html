@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="container py-4 py-lg-5">
+    <div class="page-heading">
+        <p class="eyebrow mb-2">Upload & Predict</p>
+        <h1>Upload a crop leaf image</h1>
+        <p class="text-muted">Accepted formats: JPG, JPEG, PNG. Use a clear image focused on a cassava or maize leaf for best results.</p>
+    </div>
+
+    <div class="row g-4">
+        <div class="col-lg-7">
+            <div class="panel-card">
+                <form method="post" action="/detect" enctype="multipart/form-data" id="predictionForm">
+                    <label for="leafImage" class="upload-dropzone" id="uploadDropzone">
+                        <input class="d-none" type="file" id="leafImage" name="file" accept=".jpg,.jpeg,.png" required>
+                        <span class="upload-title">Choose or drag a leaf image</span>
+                        <span class="upload-subtitle">The system will run gate detection, crop classification, and disease prediction.</span>
+                    </label>
+                    <div class="preview-panel mt-4" id="previewPanel">
+                        <img src="" alt="Leaf preview" id="imagePreview" class="preview-image d-none">
+                        <div id="previewPlaceholder">
+                            <h4>Image preview will appear here</h4>
+                            <p class="mb-0">This helps the user confirm the selected image before sending it for prediction.</p>
+                        </div>
+                    </div>
+                    <div class="d-grid d-md-flex gap-3 mt-4">
+                        <button type="submit" class="btn btn-success btn-lg rounded-pill px-4" id="predictButton">Predict Disease</button>
+                        <a href="/history" class="btn btn-outline-success btn-lg rounded-pill px-4">View History</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="col-lg-5">
+            <div class="panel-card h-100">
+                <h3>Best image tips</h3>
+                <ul class="feature-list">
+                    <li>Capture one leaf clearly with good lighting.</li>
+                    <li>Avoid blurry, dark, or crowded background images.</li>
+                    <li>Keep the leaf symptoms visible in the frame.</li>
+                    <li>Unsupported crops and non-plant images will be rejected.</li>
+                </ul>
+                <div class="loading-box d-none" id="loadingBox">
+                    <div class="spinner-border text-success" role="status"></div>
+                    <p class="mt-3 mb-0">Running the prediction pipeline. Please wait...</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

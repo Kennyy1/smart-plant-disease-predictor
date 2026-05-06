@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="3840" height="2160" viewBox="0 0 3840 2160" fill="none">
+  <rect width="3840" height="2160" fill="#143C24"/>
+  <rect width="3840" height="2160" fill="url(#paint0_linear)"/>
+  <circle cx="2922" cy="402" r="248" fill="#F2D97D" fill-opacity="0.36"/>
+  <path d="M0 1690C476 1450 955 1361 1435 1422C1915 1483 2398 1773 2886 1791C3235 1804 3553 1700 3840 1480V2160H0V1690Z" fill="#2F6B3F"/>
+  <path d="M199 1557C524 1302 802 1183 1168 1219C1476 1250 1819 1474 2109 1610C2422 1758 2812 1815 3191 1705C3426 1636 3645 1514 3840 1369V2160H199V1557Z" fill="#89B56A"/>
+  <rect x="2156" y="788" width="870" height="566" rx="36" fill="#F7F8F3" fill-opacity="0.16" stroke="#F7F8F3" stroke-opacity="0.22" stroke-width="10"/>
+  <rect x="2240" y="872" width="454" height="298" rx="24" fill="#F7F8F3" fill-opacity="0.96"/>
+  <path d="M2326 1092C2395 945 2592 889 2708 1016C2817 1136 2762 1295 2636 1361C2504 1428 2362 1338 2326 1092Z" fill="#89B56A"/>
+  <path d="M2616 947C2767 872 2965 984 2990 1162" stroke="#2F6B3F" stroke-width="28" stroke-linecap="round"/>
+  <circle cx="2848" cy="1037" r="90" fill="#2F6B3F"/>
+  <path d="M3026 1304H2268" stroke="#D3DBC8" stroke-width="18" stroke-linecap="round"/>
+  <rect x="1128" y="595" width="492" height="760" rx="48" fill="#F7F8F3" fill-opacity="0.16" stroke="#F7F8F3" stroke-opacity="0.22" stroke-width="10"/>
+  <rect x="1188" y="682" width="372" height="566" rx="30" fill="#FFFDF4"/>
+  <path d="M1351 1165C1290 994 1361 854 1496 784C1600 730 1737 740 1844 803" stroke="#2F6B3F" stroke-width="30" stroke-linecap="round"/>
+  <path d="M1467 1115C1427 996 1474 901 1563 854C1630 819 1711 822 1782 860" stroke="#89B56A" stroke-width="22" stroke-linecap="round"/>
+  <path d="M876 320H1576" stroke="#F7F8F3" stroke-opacity="0.82" stroke-width="26" stroke-linecap="round"/>
+  <path d="M876 404H1334" stroke="#F7F8F3" stroke-opacity="0.54" stroke-width="18" stroke-linecap="round"/>
+  <text x="876" y="1248" fill="#143C24" font-family="Arial, sans-serif" font-size="112" font-weight="700">CropDetect AI</text>
+  <text x="876" y="1364" fill="#476352" font-family="Arial, sans-serif" font-size="58">Intelligent screening for cassava and maize leaves</text>
+  <defs>
+    <linearGradient id="paint0_linear" x1="1920" y1="0" x2="1920" y2="2160" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#173F28"/>
+      <stop offset="1" stop-color="#102E1C"/>
+    </linearGradient>
+  </defs>
+</svg>

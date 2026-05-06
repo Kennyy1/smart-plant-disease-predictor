@@ -1,0 +1,96 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="hero-wrap">
+    <div id="landingCarousel" class="carousel slide carousel-fade" data-bs-ride="carousel">
+        <div class="carousel-indicators">
+            {% for slide in carousel_slides %}
+            <button type="button" data-bs-target="#landingCarousel" data-bs-slide-to="{{ loop.index0 }}" class="{% if loop.first %}active{% endif %}" {% if loop.first %}aria-current="true"{% endif %} aria-label="Slide {{ loop.index }}"></button>
+            {% endfor %}
+        </div>
+        <div class="carousel-inner">
+            {% for slide in carousel_slides %}
+            <div class="carousel-item {% if loop.first %}active{% endif %}">
+                <img
+                    src="{{ url_for('static', path=slide.image_path) }}"
+                    class="d-block w-100 hero-carousel-image"
+                    alt="{{ slide.title }}"
+                    loading="{% if loop.first %}eager{% else %}lazy{% endif %}"
+                    onerror="this.onerror=null;this.src='{{ url_for('static', path=slide.fallback_image_path) }}';"
+                >
+                <div class="hero-slide-overlay"></div>
+                <div class="carousel-caption hero-caption">
+                    <div class="hero-caption-card">
+                        <span class="badge badge-soft mb-3">{{ slide.badge }}</span>
+                        <h1 class="display-4 fw-bold hero-title">{{ slide.title }}</h1>
+                        <p class="lead hero-copy">{{ slide.subtitle }}</p>
+                        <div class="hero-actions d-flex flex-wrap gap-3 pt-2">
+                            <a href="{{ slide.primary_href }}" class="btn btn-success btn-lg rounded-pill px-4">{{ slide.primary_label }}</a>
+                            <a href="{{ slide.secondary_href }}" class="btn btn-outline-light btn-lg rounded-pill px-4">{{ slide.secondary_label }}</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#landingCarousel" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#landingCarousel" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+</section>
+
+<section class="py-5">
+    <div class="container">
+        <div class="row g-4">
+            <div class="col-md-4">
+                <div class="info-card h-100">
+                    <h3>Fast image screening</h3>
+                    <p>The gate model filters out non-plant images before the disease workflow continues.</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="info-card h-100">
+                    <h3>Focused crop support</h3>
+                    <p>The platform currently supports cassava and maize disease detection using dedicated models.</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="info-card h-100">
+                    <h3>Farmer-friendly output</h3>
+                    <p>Prediction results include crop type, disease class, confidence score, and short practical advice.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="pb-5">
+    <div class="container">
+        <div class="section-heading d-flex justify-content-between align-items-center flex-wrap gap-3">
+            <div>
+                <p class="eyebrow mb-2">Plant disease education</p>
+                <h2 class="mb-0">Featured blog highlights</h2>
+            </div>
+            <a href="/blog" class="btn btn-outline-success rounded-pill px-4">View all articles</a>
+        </div>
+        <div class="row g-4 mt-1">
+            {% for post in featured_posts %}
+            <div class="col-lg-4">
+                <div class="blog-card h-100">
+                    <img src="{{ url_for('static', path=post.image_path) }}" alt="{{ post.title }}" class="blog-thumb" loading="lazy" onerror="this.onerror=null;this.src='{{ url_for('static', path=post.fallback_image_path) }}';">
+                    <div class="p-4">
+                        <h4>{{ post.title }}</h4>
+                        <p>{{ post.excerpt }}</p>
+                        <a href="/blog" class="link-arrow">Read More</a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endblock %}

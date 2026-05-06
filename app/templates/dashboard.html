@@ -1,0 +1,90 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="container py-4 py-lg-5">
+    <div class="page-heading">
+        <p class="eyebrow mb-2">Dashboard</p>
+        <h1>Welcome, {{ current_user.full_name }}</h1>
+        <p class="text-muted">Monitor your prediction activity and jump back into the disease detection workflow anytime.</p>
+    </div>
+
+    <div class="row g-4">
+        <div class="col-md-6 col-xl-3">
+            <div class="summary-card">
+                <span class="summary-label">Total predictions</span>
+                <h2>{{ total_predictions }}</h2>
+            </div>
+        </div>
+        <div class="col-md-6 col-xl-3">
+            <div class="summary-card">
+                <span class="summary-label">Supported crops</span>
+                <h2>{{ supported_crops }}</h2>
+            </div>
+        </div>
+        <div class="col-md-6 col-xl-3">
+            <div class="summary-card">
+                <span class="summary-label">Recent result</span>
+                <h2>{{ recent_result }}</h2>
+            </div>
+        </div>
+        <div class="col-md-6 col-xl-3">
+            <div class="summary-card">
+                <span class="summary-label">System accuracy</span>
+                <h2>{{ system_accuracy }}</h2>
+            </div>
+        </div>
+    </div>
+
+    <div class="row g-4 mt-2">
+        <div class="col-lg-8">
+            <div class="panel-card h-100">
+                <div class="d-flex justify-content-between align-items-center mb-3">
+                    <h3 class="mb-0">Recent predictions</h3>
+                    <a href="/history" class="btn btn-sm btn-outline-success rounded-pill px-3">View history</a>
+                </div>
+                {% if recent_history %}
+                <div class="table-responsive">
+                    <table class="table align-middle">
+                        <thead>
+                            <tr>
+                                <th>Date</th>
+                                <th>Crop</th>
+                                <th>Disease</th>
+                                <th>Confidence</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for item in recent_history %}
+                            <tr>
+                                <td>{{ item.created_at.strftime("%d %b %Y") }}</td>
+                                <td>{{ format_label(item.crop_name) }}</td>
+                                <td>{{ format_label(item.disease_name) }}</td>
+                                <td>{{ "%.2f"|format(item.confidence_score * 100) }}%</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+                {% else %}
+                <div class="empty-state">
+                    <h4>No prediction history yet</h4>
+                    <p>Upload your first maize or cassava leaf image to get started.</p>
+                    <a href="/detect" class="btn btn-success rounded-pill px-4">Make a Prediction</a>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+        <div class="col-lg-4">
+            <div class="panel-card h-100">
+                <h3>Pipeline summary</h3>
+                <ul class="feature-list">
+                    <li>Gate model rejects non-plant images before crop analysis.</li>
+                    <li>Crop classifier narrows the prediction path to cassava or maize.</li>
+                    <li>Disease model returns confidence score and recommendation.</li>
+                    <li>Successful predictions are saved to your personal history.</li>
+                </ul>
+                <a href="/detect" class="btn btn-success rounded-pill px-4 mt-3">Upload Leaf Image</a>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

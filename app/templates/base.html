@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ page_title or "Crop Disease Detection System" }}</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', path='css/style.css') }}">
+</head>
+<body>
+    <div class="app-shell">
+        <div class="page-orb page-orb-one" aria-hidden="true"></div>
+        <div class="page-orb page-orb-two" aria-hidden="true"></div>
+        <div class="page-grid" aria-hidden="true"></div>
+        <nav class="navbar navbar-expand-lg sticky-top app-navbar">
+            <div class="container-fluid px-3 px-lg-4">
+                <a class="navbar-brand brand-mark" href="/">CropDetect AI</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar" aria-controls="mainNavbar" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="mainNavbar">
+                    <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-2">
+                        <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/blog">Blog</a></li>
+                        {% if current_user %}
+                        <li class="nav-item"><a class="nav-link" href="/dashboard">Dashboard</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/detect">Detect Disease</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/history">History</a></li>
+                        <li class="nav-item ms-lg-2">
+                            <a class="btn btn-outline-success rounded-pill px-4" href="/logout">Logout</a>
+                        </li>
+                        {% else %}
+                        <li class="nav-item"><a class="nav-link" href="/login">Login</a></li>
+                        <li class="nav-item ms-lg-2">
+                            <a class="btn btn-success rounded-pill px-4" href="/signup">Get Started</a>
+                        </li>
+                        {% endif %}
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <div class="container-fluid">
+            <div class="row g-0">
+                {% if current_user %}
+                <aside class="col-lg-2 d-none d-lg-block sidebar-panel">
+                    <div class="sidebar-card">
+                        <p class="sidebar-label">Signed in as</p>
+                        <h5 class="mb-4">{{ current_user.full_name }}</h5>
+                        <a class="sidebar-link" href="/dashboard">Overview</a>
+                        <a class="sidebar-link" href="/detect">Upload & Predict</a>
+                        <a class="sidebar-link" href="/history">Prediction History</a>
+                        <a class="sidebar-link" href="/blog">Plant Disease Blog</a>
+                    </div>
+                </aside>
+                <main class="col-lg-10 main-content">
+                {% else %}
+                <main class="col-12 main-content">
+                {% endif %}
+                    {% if flashes %}
+                    <div class="container py-3">
+                        {% for flash in flashes %}
+                        <div class="alert alert-{{ flash.category }} alert-dismissible fade show rounded-4 shadow-sm" role="alert">
+                            {{ flash.message }}
+                            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                        </div>
+                        {% endfor %}
+                    </div>
+                    {% endif %}
+                    {% block content %}{% endblock %}
+                </main>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="{{ url_for('static', path='js/main.js') }}"></script>
+</body>
+</html>

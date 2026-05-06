@@ -1,0 +1,15 @@
+=== GATE MODEL METRICS ===
+Accuracy : 0.9630
+Precision: 0.9375
+Recall   : 1.0000
+F1-score : 0.9677
+
+=== CLASSIFICATION REPORT ===
+              precision    recall  f1-score   support
+
+    nonplant       1.00      0.92      0.96        12
+       plant       0.94      1.00      0.97        15
+
+    accuracy                           0.96        27
+   macro avg       0.97      0.96      0.96        27
+weighted avg       0.97      0.96      0.96        27

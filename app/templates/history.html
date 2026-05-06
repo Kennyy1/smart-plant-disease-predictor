@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="container py-4 py-lg-5">
+    <div class="page-heading">
+        <p class="eyebrow mb-2">Prediction History</p>
+        <h1>Your saved detection records</h1>
+        <p class="text-muted">Review previous prediction results, confidence scores, and image records from your account.</p>
+    </div>
+
+    <div class="panel-card">
+        {% if history_items %}
+        <div class="table-responsive">
+            <table class="table align-middle history-table">
+                <thead>
+                    <tr>
+                        <th>Image</th>
+                        <th>Date</th>
+                        <th>Crop</th>
+                        <th>Disease</th>
+                        <th>Confidence</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for item in history_items %}
+                    <tr>
+                        <td><img src="{{ item.image_path }}" alt="Prediction thumbnail" class="history-thumb"></td>
+                        <td>{{ item.created_at.strftime("%d %b %Y") }}</td>
+                        <td>{{ format_label(item.crop_name) }}</td>
+                        <td>{{ format_label(item.disease_name) }}</td>
+                        <td>{{ "%.2f"|format(item.confidence_score * 100) }}%</td>
+                        <td><a href="/history/{{ item.id }}" class="btn btn-sm btn-outline-success rounded-pill px-3">View details</a></td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        {% else %}
+        <div class="empty-state">
+            <h4>No saved predictions yet</h4>
+            <p>Your successful cassava and maize predictions will appear here after detection.</p>
+            <a href="/detect" class="btn btn-success rounded-pill px-4">Upload a Leaf Image</a>
+        </div>
+        {% endif %}
+    </div>
+</section>
+{% endblock %}
